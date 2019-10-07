@@ -14,7 +14,7 @@ public class Main {
 		configureNotifyKeySpaceEventsTo_Elx(redisClient);
 
 		StatefulRedisPubSubConnection<String, String> pubSubConnection = redisClient.connectPubSub();
-		pubSubConnection.addListener(new RPushConsolePrinterListener());
+		pubSubConnection.addListener(new RedisSusbcribptionConsolePrinterListener());
 
 		Runnable subscriberThread = () -> {
 			try {
@@ -41,7 +41,7 @@ public class Main {
 }
 
 
-class RPushConsolePrinterListener extends RedisPubSubAdapter<String, String> {
+class RedisSusbcribptionConsolePrinterListener extends RedisPubSubAdapter<String, String> {
 	@Override
 	public void message(String pattern, String channel, String message) {
 		System.out.println(message);
