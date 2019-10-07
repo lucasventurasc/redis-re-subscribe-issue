@@ -27,7 +27,7 @@ public class Main {
 
 		subscriberThread.run();
 
-		while(true) {
+		while (true) {
 			Thread.sleep(1000);
 		}
 	}
@@ -38,11 +38,8 @@ public class Main {
 			sync.configSet("notify-keyspace-events", "Elx");
 		}
 	}
-
-	private static boolean isNotifyKeyspaceEventsNotSet(RedisCommands<String, String> sync) {
-		return sync.configGet("notify-keyspace-events").getOrDefault("notify-keyspace-events", "").isEmpty();
-	}
 }
+
 
 class RPushConsolePrinterListener extends RedisPubSubAdapter<String, String> {
 	@Override
